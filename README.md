@@ -13,14 +13,19 @@ In this project, the PID parameters were tuned manually by the following steps:
 6. Increase the I gain until it brings you to the setpoint with the number of oscillations desired (normally zero but a quicker response can be had if you don't mind a couple oscillations of overshoot) 
 [Click here for the reference](https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops)
 
-###The final demo video is shown below:
+### The final demo video is shown below:
 [Click here to see the full video](https://youtu.be/oE5oX-9zIU0)
 
 ## PID Parameter Tuning
-Various P, I, D gains have different effects on the system, P component accounts for the present errors and increase P value will easily make the car pass lane center which causes cross-track error to be zero, therefore, large P gains cause the car always steer opposite to the car's distance from lane center, and thus introducing oscillations for the car. [Click here to see how car behaves with P controller](https://youtu.be/CdyQFz8D6Dg)
+Various P, I, D gains have different effects on the system, P component accounts for the present errors and increase P value will easily make the car pass lane center which causes cross-track error to be zero, therefore, large P gains cause the car always steer opposite to the car's distance from lane center, and thus introducing oscillations for the car. 
+[Click here to see how car behaves with P controller](https://youtu.be/CdyQFz8D6Dg)
+
 When D component is introduced to the algorithm, it acts as a damping to the system, which slows down the CTE getting to least value, and the car will be driving smoothly, oscillation will go away as well when D component is getting larger. 
+
 Even though the car is able to drive smoothly with PD controller, there are alwasy some oscillation during the driving and the car was not able to reach the lane center, in other words, it always has some steady state error. In order to eliminate this error, I component was introduced to the controller, and it brings the car to the lane center with number of oscillations quickly. 
+
 The final video above shows how the car responses with PID controller. 
+
 ### Final PID parameters for steering are:
 #### P : 0.25
 #### I : 0.00065
