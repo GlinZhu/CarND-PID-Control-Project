@@ -2,7 +2,22 @@
 #define PID_H
 
 class PID {
- public:
+public:
+    /**
+     * PID Errors
+     */
+    double p_error;
+    double i_error;
+    double d_error;
+    
+    /**
+     * PID Coefficients
+     */
+    double Kp;
+    double Ki;
+    double Kd;
+    int time_step;
+public:
   /**
    * Constructor
    */
@@ -24,27 +39,15 @@ class PID {
    * @param cte The current cross track error
    */
   void UpdateError(double cte);
-
+    
+    
   /**
    * Calculate the total PID error.
    * @output The total PID error
    */
-  double TotalError();
+  double Output_pid();
 
- private:
-  /**
-   * PID Errors
-   */
-  double p_error;
-  double i_error;
-  double d_error;
-
-  /**
-   * PID Coefficients
-   */ 
-  double Kp;
-  double Ki;
-  double Kd;
+ 
 };
 
 #endif  // PID_H

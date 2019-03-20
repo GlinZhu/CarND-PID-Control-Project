@@ -2,6 +2,35 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Objective
+The objective of this project is to implement PID controller to control the steering angle as well as throttle for car in the simulator. The cross track error was provided by the simulator and we need to implement PID error and init function. 
+In this project, the PID parameters were tuned manually by the following steps:
+1. Set all parameters to zero;
+2. Increase the P gain until the response to a disturbance is steady oscillation.
+3. Increase the D gain until the the oscillations go away (i.e. it's critically damped).
+4. Repeat steps 2 and 3 until increasing the D gain does not stop the oscillations.
+5. Set P and D to the last stable values.
+6. Increase the I gain until it brings you to the setpoint with the number of oscillations desired (normally zero but a quicker response can be had if you don't mind a couple oscillations of overshoot) 
+[Click here for the reference](https://robotics.stackexchange.com/questions/167/what-are-good-strategies-for-tuning-pid-loops)
+
+###The final demo video is shown below:
+[Click here to see the full video](https://youtu.be/oE5oX-9zIU0)
+
+## PID Parameter Tuning
+Various P, I, D gains have different effects on the system, P component accounts for the present errors and increase P value will easily make the car pass lane center which causes cross-track error to be zero, therefore, large P gains cause the car always steer opposite to the car's distance from lane center, and thus introducing oscillations for the car. [Click here to see how car behaves with P controller](https://youtu.be/CdyQFz8D6Dg)
+When D component is introduced to the algorithm, it acts as a damping to the system, which slows down the CTE getting to least value, and the car will be driving smoothly, oscillation will go away as well when D component is getting larger. 
+Even though the car is able to drive smoothly with PD controller, there are alwasy some oscillation during the driving and the car was not able to reach the lane center, in other words, it always has some steady state error. In order to eliminate this error, I component was introduced to the controller, and it brings the car to the lane center with number of oscillations quickly. 
+The final video above shows how the car responses with PID controller. 
+### Final PID parameters for steering are:
+#### P : 0.25
+#### I : 0.00065
+#### D : 8.0
+
+### Final PID parameters for throttle are:
+#### P : 0.8
+#### I : 0.00
+#### D : 2.0
+
 
 ## Dependencies
 
